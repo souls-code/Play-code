@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>📝 Ma Liste de Tâches</h1>
-            <p class="subtitle">Organisez votre journée efficacement</p>
+            <h1>📝 My Todo List</h1>
+            <p class="subtitle">Organize your day efficiently</p>
         </header>
 
         <div class="input-section">
@@ -18,40 +18,40 @@
                 <input 
                     type="text" 
                     id="todo-input" 
-                    placeholder="Ajouter une nouvelle tâche..."
+                    placeholder="Add a new task..."
                     autocomplete="off"
                     required
                 >
                 <button type="submit" id="add-btn">
-                    <span>Ajouter</span>
+                    <span>Add</span>
                 </button>
             </form>
         </div>
 
         <div class="filters">
-            <button class="filter-btn active" data-filter="all">Toutes</button>
-            <button class="filter-btn" data-filter="pending">En cours</button>
-            <button class="filter-btn" data-filter="completed">Terminées</button>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
         </div>
 
         <div class="stats">
-            <span id="total-tasks">0 tâche(s)</span>
-            <span id="completed-tasks">0 terminée(s)</span>
+            <span id="total-tasks">0 task(s)</span>
+            <span id="completed-tasks">0 completed</span>
         </div>
 
         <ul id="todo-list" class="todo-list">
-            <!-- Les tâches seront ajoutées ici dynamiquement -->
+            <!-- Tasks will be added here dynamically -->
         </ul>
 
         <div id="empty-state" class="empty-state">
             <span class="empty-icon">🎯</span>
-            <p>Aucune tâche pour le moment</p>
-            <p class="empty-hint">Ajoutez votre première tâche ci-dessus</p>
+            <p>No tasks yet</p>
+            <p class="empty-hint">Add your first task above</p>
         </div>
 
         <footer>
             <button id="clear-completed" class="clear-btn" style="display: none;">
-                Supprimer les tâches terminées
+                Clear completed tasks
             </button>
         </footer>
     </div>

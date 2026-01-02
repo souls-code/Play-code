@@ -1,8 +1,8 @@
-// Todo App - Application de gestion de tâches
+// Todo App - Task Management Application
 
 class TodoApp {
     constructor() {
-        // Éléments du DOM
+        // DOM Elements
         this.form = document.getElementById('todo-form');
         this.input = document.getElementById('todo-input');
         this.todoList = document.getElementById('todo-list');
@@ -12,16 +12,16 @@ class TodoApp {
         this.clearCompletedBtn = document.getElementById('clear-completed');
         this.filterBtns = document.querySelectorAll('.filter-btn');
 
-        // État de l'application
+        // Application state
         this.todos = this.loadFromStorage();
         this.currentFilter = 'all';
 
-        // Initialisation
+        // Initialize
         this.init();
     }
 
     init() {
-        // Écouteurs d'événements
+        // Event listeners
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
         this.clearCompletedBtn.addEventListener('click', () => this.clearCompleted());
         
@@ -29,27 +29,27 @@ class TodoApp {
             btn.addEventListener('click', (e) => this.handleFilter(e));
         });
 
-        // Rendu initial
+        // Initial render
         this.render();
     }
 
-    // Charger les tâches depuis le localStorage
+    // Load tasks from localStorage
     loadFromStorage() {
         const stored = localStorage.getItem('todos');
         return stored ? JSON.parse(stored) : [];
     }
 
-    // Sauvegarder les tâches dans le localStorage
+    // Save tasks to localStorage
     saveToStorage() {
         localStorage.setItem('todos', JSON.stringify(this.todos));
     }
 
-    // Générer un ID unique
+    // Generate a unique ID
     generateId() {
         return Date.now().toString(36) + Math.random().toString(36).substr(2);
     }
 
-    // Gérer la soumission du formulaire
+    // Handle form submission
     handleSubmit(e) {
         e.preventDefault();
         const text = this.input.value.trim();
@@ -61,7 +61,7 @@ class TodoApp {
         }
     }
 
-    // Ajouter une nouvelle tâche
+    // Add a new task
     addTodo(text) {
         const todo = {
             id: this.generateId(),
@@ -75,7 +75,7 @@ class TodoApp {
         this.render();
     }
 
-    // Basculer l'état d'une tâche
+    // Toggle task status
     toggleTodo(id) {
         const todo = this.todos.find(t => t.id === id);
         if (todo) {
@@ -85,21 +85,21 @@ class TodoApp {
         }
     }
 
-    // Supprimer une tâche
+    // Delete a task
     deleteTodo(id) {
         this.todos = this.todos.filter(t => t.id !== id);
         this.saveToStorage();
         this.render();
     }
 
-    // Supprimer toutes les tâches terminées
+    // Clear all completed tasks
     clearCompleted() {
         this.todos = this.todos.filter(t => !t.completed);
         this.saveToStorage();
         this.render();
     }
 
-    // Gérer le changement de filtre
+    // Handle filter change
     handleFilter(e) {
         this.filterBtns.forEach(btn => btn.classList.remove('active'));
         e.target.classList.add('active');
@@ -107,7 +107,7 @@ class TodoApp {
         this.render();
     }
 
-    // Filtrer les tâches selon le filtre actuel
+    // Filter tasks based on current filter
     getFilteredTodos() {
         switch (this.currentFilter) {
             case 'pending':
@@ -119,19 +119,19 @@ class TodoApp {
         }
     }
 
-    // Mettre à jour les statistiques
+    // Update statistics
     updateStats() {
         const total = this.todos.length;
         const completed = this.todos.filter(t => t.completed).length;
 
-        this.totalTasks.textContent = `${total} tâche${total !== 1 ? 's' : ''}`;
-        this.completedTasks.textContent = `${completed} terminée${completed !== 1 ? 's' : ''}`;
+        this.totalTasks.textContent = `${total} task${total !== 1 ? 's' : ''}`;
+        this.completedTasks.textContent = `${completed} completed`;
 
-        // Afficher/masquer le bouton de suppression des tâches terminées
+        // Show/hide clear completed button
         this.clearCompletedBtn.style.display = completed > 0 ? 'inline-block' : 'none';
     }
 
-    // Créer l'élément HTML d'une tâche
+    // Create HTML element for a task
     createTodoElement(todo) {
         const li = document.createElement('li');
         li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
@@ -140,7 +140,7 @@ class TodoApp {
         li.innerHTML = `
             <div class="checkbox" role="checkbox" aria-checked="${todo.completed}" tabindex="0"></div>
             <span class="todo-text">${this.escapeHtml(todo.text)}</span>
-            <button class="delete-btn" aria-label="Supprimer la tâche">
+            <button class="delete-btn" aria-label="Delete task">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="3 6 5 6 21 6"></polyline>
                     <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -150,7 +150,7 @@ class TodoApp {
             </button>
         `;
 
-        // Écouteurs d'événements pour la tâche
+        // Event listeners for the task
         const checkbox = li.querySelector('.checkbox');
         const deleteBtn = li.querySelector('.delete-btn');
 
@@ -167,39 +167,39 @@ class TodoApp {
         return li;
     }
 
-    // Échapper les caractères HTML pour éviter les injections XSS
+    // Escape HTML characters to prevent XSS attacks
     escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
     }
 
-    // Rendre l'interface
+    // Render the interface
     render() {
         const filteredTodos = this.getFilteredTodos();
 
-        // Vider la liste
+        // Clear the list
         this.todoList.innerHTML = '';
 
-        // Afficher les tâches filtrées
+        // Display filtered tasks
         filteredTodos.forEach(todo => {
             const element = this.createTodoElement(todo);
             this.todoList.appendChild(element);
         });
 
-        // Gérer l'état vide
+        // Handle empty state
         if (filteredTodos.length === 0) {
             this.emptyState.classList.remove('hidden');
         } else {
             this.emptyState.classList.add('hidden');
         }
 
-        // Mettre à jour les statistiques
+        // Update statistics
         this.updateStats();
     }
 }
 
-// Initialiser l'application au chargement de la page
+// Initialize the app when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     new TodoApp();
 });

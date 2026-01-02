@@ -1,62 +1,62 @@
-# Todo App - Application de Gestion de Tâches
+# Todo App - Task Management Application
 
-Une application web moderne et élégante pour gérer vos tâches quotidiennes, développée en JavaScript vanilla.
+A modern and elegant web application to manage your daily tasks, built with vanilla JavaScript.
 
-## Fonctionnalités
+## Features
 
-- ✅ **Ajouter des tâches** - Créez rapidement de nouvelles tâches
-- ✅ **Marquer comme terminée** - Cochez les tâches accomplies
-- ✅ **Supprimer des tâches** - Retirez les tâches individuellement
-- ✅ **Filtrer les tâches** - Affichez toutes les tâches, en cours ou terminées
-- ✅ **Persistance locale** - Vos données sont sauvegardées dans le navigateur (localStorage)
-- ✅ **Interface responsive** - S'adapte à tous les écrans (mobile, tablette, desktop)
-- ✅ **Animations fluides** - Transitions élégantes pour une meilleure expérience utilisateur
+- ✅ **Add tasks** - Quickly create new tasks
+- ✅ **Mark as completed** - Check off accomplished tasks
+- ✅ **Delete tasks** - Remove tasks individually
+- ✅ **Filter tasks** - View all tasks, pending, or completed
+- ✅ **Local persistence** - Your data is saved in the browser (localStorage)
+- ✅ **Responsive interface** - Adapts to all screens (mobile, tablet, desktop)
+- ✅ **Smooth animations** - Elegant transitions for a better user experience
 
-## Structure du projet
+## Project Structure
 
 ```
 /
-├── index.html      # Structure HTML de l'application
-├── style.css       # Styles et design de l'interface
-├── app.js          # Logique JavaScript de l'application
+├── index.html      # HTML structure of the application
+├── style.css       # Styles and interface design
+├── app.js          # JavaScript application logic
 └── README.md       # Documentation
 ```
 
-## Comment utiliser
+## How to Use
 
-1. **Ouvrir l'application**
-   - Ouvrez simplement le fichier `index.html` dans votre navigateur web
+1. **Open the application**
+   - Simply open the `index.html` file in your web browser
 
-2. **Ajouter une tâche**
-   - Tapez le texte de votre tâche dans le champ de saisie
-   - Appuyez sur Entrée ou cliquez sur "Ajouter"
+2. **Add a task**
+   - Type your task text in the input field
+   - Press Enter or click "Add"
 
-3. **Marquer une tâche comme terminée**
-   - Cliquez sur la case à cocher à gauche de la tâche
+3. **Mark a task as completed**
+   - Click on the checkbox to the left of the task
 
-4. **Supprimer une tâche**
-   - Survolez la tâche et cliquez sur l'icône poubelle
+4. **Delete a task**
+   - Hover over the task and click the trash icon
 
-5. **Filtrer les tâches**
-   - Utilisez les boutons "Toutes", "En cours" ou "Terminées"
+5. **Filter tasks**
+   - Use the "All", "Pending", or "Completed" buttons
 
-6. **Supprimer toutes les tâches terminées**
-   - Cliquez sur le bouton "Supprimer les tâches terminées"
+6. **Clear all completed tasks**
+   - Click the "Clear completed tasks" button
 
-## Technologies utilisées
+## Technologies Used
 
-- **HTML5** - Structure sémantique
-- **CSS3** - Styles modernes avec variables CSS, flexbox et animations
-- **JavaScript ES6+** - Programmation orientée objet avec classes
+- **HTML5** - Semantic structure
+- **CSS3** - Modern styles with CSS variables, flexbox, and animations
+- **JavaScript ES6+** - Object-oriented programming with classes
 
-## Compatibilité navigateurs
+## Browser Compatibility
 
-L'application fonctionne sur tous les navigateurs modernes :
-- Chrome (recommandé)
+The application works on all modern browsers:
+- Chrome (recommended)
 - Firefox
 - Safari
 - Edge
 
-## Licence
+## License
 
-Ce projet est libre d'utilisation.
+This project is free to use.
