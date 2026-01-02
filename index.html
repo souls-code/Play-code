@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo — JavaScript</title>
+    <meta name="description" content="Une application Todo simple en JavaScript (localStorage, filtres, édition)." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-labelledby="app-title">
+      <header class="header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">✓</div>
+          <div>
+            <h1 id="app-title">Todo</h1>
+            <p class="subtitle">Ajoutez, cochez, éditez — tout est sauvegardé.</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="card" aria-label="Créer une tâche">
+        <form id="create-form" class="create" autocomplete="off">
+          <label class="sr-only" for="new-todo">Nouvelle tâche</label>
+          <input
+            id="new-todo"
+            name="new-todo"
+            type="text"
+            inputmode="text"
+            placeholder="Ex. Acheter du lait…"
+            maxlength="200"
+            required
+          />
+          <button type="submit" class="primary" id="add-btn">Ajouter</button>
+        </form>
+        <div class="meta">
+          <div class="left">
+            <span id="items-left" aria-live="polite"></span>
+          </div>
+          <div class="right">
+            <button type="button" class="ghost" id="toggle-all-btn">Tout (dé)cocher</button>
+            <button type="button" class="ghost danger" id="clear-completed-btn">Effacer terminées</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-label="Liste des tâches">
+        <div class="toolbar">
+          <div class="filters" role="tablist" aria-label="Filtres">
+            <button type="button" class="filter is-active" data-filter="all" role="tab" aria-selected="true">
+              Toutes
+            </button>
+            <button type="button" class="filter" data-filter="active" role="tab" aria-selected="false">
+              Actives
+            </button>
+            <button type="button" class="filter" data-filter="completed" role="tab" aria-selected="false">
+              Terminées
+            </button>
+          </div>
+          <div class="search">
+            <label class="sr-only" for="search-input">Rechercher</label>
+            <input id="search-input" type="search" placeholder="Rechercher…" />
+          </div>
+        </div>
+
+        <ul id="todo-list" class="list" aria-label="Tâches"></ul>
+
+        <div id="empty-state" class="empty" hidden>
+          <p class="empty-title">Aucune tâche ici.</p>
+          <p class="empty-subtitle">Créez-en une au-dessus, ou changez le filtre.</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>
+          Astuces : <kbd>Entrée</kbd> pour ajouter, double-clic pour éditer, <kbd>Échap</kbd> pour annuler.
+        </p>
+      </footer>
+    </main>
+
+    <template id="todo-item-template">
+      <li class="item">
+        <label class="check">
+          <input class="toggle" type="checkbox" />
+          <span class="check-ui" aria-hidden="true"></span>
+        </label>
+
+        <div class="content">
+          <div class="row">
+            <span class="text"></span>
+            <span class="badge" hidden>terminée</span>
+          </div>
+          <div class="row subtle">
+            <span class="timestamp"></span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="icon" data-action="edit" aria-label="Éditer">✎</button>
+          <button type="button" class="icon danger" data-action="delete" aria-label="Supprimer">🗑</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
