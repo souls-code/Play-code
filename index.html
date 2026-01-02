@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Ma Liste de Tâches</h1>
+            <p class="subtitle">Organisez votre journée efficacement</p>
+        </header>
+
+        <div class="input-section">
+            <form id="todo-form">
+                <input 
+                    type="text" 
+                    id="todo-input" 
+                    placeholder="Ajouter une nouvelle tâche..."
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit" id="add-btn">
+                    <span>Ajouter</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Toutes</button>
+            <button class="filter-btn" data-filter="pending">En cours</button>
+            <button class="filter-btn" data-filter="completed">Terminées</button>
+        </div>
+
+        <div class="stats">
+            <span id="total-tasks">0 tâche(s)</span>
+            <span id="completed-tasks">0 terminée(s)</span>
+        </div>
+
+        <ul id="todo-list" class="todo-list">
+            <!-- Les tâches seront ajoutées ici dynamiquement -->
+        </ul>
+
+        <div id="empty-state" class="empty-state">
+            <span class="empty-icon">🎯</span>
+            <p>Aucune tâche pour le moment</p>
+            <p class="empty-hint">Ajoutez votre première tâche ci-dessus</p>
+        </div>
+
+        <footer>
+            <button id="clear-completed" class="clear-btn" style="display: none;">
+                Supprimer les tâches terminées
+            </button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
